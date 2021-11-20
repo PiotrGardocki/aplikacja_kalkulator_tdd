@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter branchFilter: '.*', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
     stages {
@@ -21,7 +21,8 @@ pipeline {
         stage('STATIC ANALYSE') {
             steps {
                 script {
-                    sh 'pylint *.py'
+                    //sh 'pylint *.py'
+                    sh 'echo PYLINT'
                 }
             }
         }
