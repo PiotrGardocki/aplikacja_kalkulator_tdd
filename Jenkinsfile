@@ -2,6 +2,7 @@ pipeline {
     agent any
     parameters {
         gitParameter branchFilter: '.*', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+        choice(name: 'TEST_LEVEL', defaultValue: 'smoke', choices: ['smoke', 'regression', 'nightly'], description: 'Type od unit tests to run')
     }
 
     stages {
@@ -21,15 +22,15 @@ pipeline {
         stage('STATIC ANALYSE') {
             steps {
                 script {
-                    //sh 'python3 -m pylint'
-                    sh 'echo PYLINT'
+                    sh 'python3 -m pylint *.py --exit-zero'
+                    //sh 'echo PYLINT'
                 }
             }
         }
         stage('UNIT TESTS') {
             steps {
                 script {
-                    sh 'python3 -m pytest --html=report.html'
+                    sh 'python3 -m pytest --html=report.html -m $TEST_LEVEL'
                 }
             }
         }
