@@ -41,6 +41,9 @@ pipeline {
                 }
             }
         }
+        stage('COPY FILES') {
+            build job: 'copy_newest_report'
+        }
         stage('CLEANUP') {
             steps {
                 script {
