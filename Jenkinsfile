@@ -21,7 +21,7 @@ pipeline {
         stage('STATIC ANALYSE') {
             steps {
                 script {
-                    sh 'python3 -m pylint'
+                    sh 'pylint *.py'
                 }
             }
         }
