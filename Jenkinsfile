@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         gitParameter branchFilter: '.*', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
-        choice(name: 'TEST_LEVEL', defaultValue: 'smoke', choices: ['smoke', 'regression', 'nightly'], description: 'Type od unit tests to run')
+        choice(name: 'TEST_LEVEL', choices: ['smoke', 'regression', 'nightly'], description: 'Type od unit tests to run')
     }
 
     stages {
