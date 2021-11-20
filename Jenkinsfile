@@ -13,7 +13,7 @@ pipeline {
         stage('SET DESCRIPTION') {
             steps {
                 script {
-                    #buildName '#$BUILD_NUMBER'
+                    //buildName '#$BUILD_NUMBER'
                     buildDescription 'CI/CD Pipeline for TDD calculator'
                 }
             }
